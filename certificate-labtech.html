@@ -1,0 +1,142 @@
+<!-- Save as certificate-labtech.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Certificate in Laboratory Technology - Al-Hassan Institute</title>
+<style>
+  body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f4f4; }
+  header { background:#2c3e50; color:#fff; padding:20px; text-align:center; }
+  header h1 { margin:0; }
+  nav a { color:#ecf0f1; margin:0 15px; text-decoration:none; }
+  nav a:hover { text-decoration:underline; }
+  main { max-width:900px; margin:20px auto; background:#fff; padding:20px; border-radius:8px; }
+  h2 { color:#2980b9; }
+  img { max-width:100%; border-radius:8px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Certificate in Laboratory Technology</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#programs">Back to Programs</a>
+  </nav>
+</header>
+
+<main>
+  <section>
+    <h2>Program Overview</h2>
+    <p>The Certificate in Laboratory Technology program trains students in laboratory procedures, diagnostic techniques, and safety protocols essential for supporting medical diagnostics and research.</p>
+    <img src="images/lab_technology.jpg" alt="Laboratory Practice" />
+  </section>
+
+  <section>
+    <h2>Curriculum</h2>
+    <ul>
+      <li>Introduction to Laboratory Science</li>
+      <li>Laboratory Equipment and Safety</li>
+      <li>Sample Collection and Analysis</li>
+      <li>Diagnostic Techniques</li>
+      <li>Practical Training & Internships</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Admission Requirements</h2>
+    <ul>
+      <li>High school diploma or equivalent</li>
+      <li>Minimum GPA requirement</li>
+      <li>Application fee</li>
+      <li>Interview process</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Duration & Fees</h2>
+    <p>Duration: 1 year<br/>Fees: USD 2,000 (subject to change)</p>
+  </section>
+
+  <section>
+    <h2>Download Brochure</h2>
+    <a href="brochures/labtech_brochure.pdf" target="_blank">Download PDF</a>
+  </section>
+
+  <section>
+   <h2>Apply Now</h2>
+<form id="applicationForm" onsubmit="return validateForm()">
+  <label for="name">Full Name:</label><br />
+  <input type="text" id="name" name="name" required /><br /><br />
+
+  <label for="email">Email Address:</label><br />
+  <input type="email" id="email" name="email" required /><br /><br />
+
+  <label for="phone">Phone Number:</label><br />
+  <input type="tel" id="phone" name="phone" required /><br /><br />
+
+  <label for="qualification">Highest Qualification:</label><br />
+  <input type="text" id="qualification" name="qualification" required /><br /><br />
+
+  <label for="interested">Program Interested In:</label><br />
+  <select id="interested" name="interested" required>
+    <option value="">Select a Program</option>
+    <option value="Diploma in Nursing">Diploma in Nursing</option>
+    <option value="Diploma in Midwifery">Diploma in Midwifery</option>
+    <option value="Diploma in Laboratory Technology">Diploma in Laboratory Technology</option>
+    <option value="Diploma in Clinical Medicine">Diploma in Clinical Medicine</option>
+    <option value="Certificate in Nursing">Certificate in Nursing</option>
+    <option value="Certificate in Midwifery">Certificate in Midwifery</option>
+    <option value="Certificate in Laboratory Technology">Certificate in Laboratory Technology</option>
+    <option value="Certificate in Pharmacy">Certificate in Pharmacy</option>
+  </select><br /><br />
+
+  <label for="message">Additional Information:</label><br />
+  <textarea id="message" name="message" rows="4" placeholder="Tell us a bit about yourself or any questions..."></textarea><br /><br />
+
+  <button type="submit">Submit Application</button>
+</form>
+
+<script>
+  function validateForm() {
+    const form = document.getElementById('applicationForm');
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const phone = form.phone.value.trim();
+    const qualification = form.qualification.value.trim();
+    const interested = form.interested.value;
+
+    if (!name || !email || !phone || !qualification || !interested) {
+      alert('Please fill out all required fields.');
+      return false;
+    }
+
+    // Basic email validation
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (!email.match(emailPattern)) {
+      alert('Please enter a valid email address.');
+      return false;
+    }
+
+    // Basic phone validation
+    const phonePattern = /^[0-9\-+() ]+$/;
+    if (!phone.match(phonePattern)) {
+      alert('Please enter a valid phone number.');
+      return false;
+    }
+
+    alert('Your application has been submitted! We will contact you soon.');
+    // Here, you can add AJAX to send data to your server
+    return false; // Prevent actual form submission for demo
+  }
+</script>
+  </section>
+</main>
+
+<footer style="text-align:center; padding:20px; background:#2c3e50; color:#ecf0f1;">
+  &copy; 2026 Al-Hassan Institute
+</footer>
+
+</body>
+</html>

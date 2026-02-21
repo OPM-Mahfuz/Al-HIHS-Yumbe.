@@ -1,0 +1,76 @@
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Style the menu */
+.menu {
+  list-style: none;
+  background-color: #333;
+  display: flex;
+  flex-wrap: wrap;
+  font-family: Arial, sans-serif;
+}
+
+/* Style menu items */
+.menu > li {
+  position: relative;
+}
+
+/* Style links */
+.menu a {
+  display: block;
+  padding: 15px 20px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  background-color: #555;
+}
+
+/* Dropdown styles */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #444;
+  min-width: 200px;
+  z-index: 1000;
+  flex-direction: column;
+}
+
+/* Show dropdown on hover */
+.menu li:hover > .dropdown-content {
+  display: flex;
+}
+
+/* Style for dropdown items */
+.dropdown-content a {
+  padding: 10px 15px;
+  color: #fff;
+}
+
+.dropdown-content a:hover {
+  background-color: #666;
+}
+
+/* Style the sections */
+div[id] {
+  padding: 50px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+/* Headings */
+h2 {
+  margin-bottom: 15px;
+  color: #222;
+}
+
+/* Smooth scroll behavior for anchor links */
+html {
+  scroll-behavior: smooth;
+}

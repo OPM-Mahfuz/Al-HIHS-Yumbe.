@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Al-Hassan Institute of Health Science – Yumbe UG LTD</title>
+<style>
+  /* Reset and base styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    scroll-behavior: smooth;
+  }
+
+  /* Header styles */
+header {
+  background-color: green;
+  padding: 4% 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: greenyellow 20px;
+  border-bottom-style: outset;
+  width: 100%;
+}
+
+/* Hamburger menu styles */
+.menu-toggle {
+  display: none; /* Hidden on larger screens */
+  cursor: pointer;
+  width: 30px;
+  height: 25px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.menu-toggle .bar {
+  width: 100%;
+  height: 4px;
+  background-color: #ecf0f1;
+  border-radius: 2px;
+}
+
+/* Show hamburger on small screens */
+@media(max-width: 768px){
+  .menu-toggle {
+    display: flex;
+  }
+}
+
+/* Header title */
+header h1 {
+  font-size: 2.5em;
+  margin-bottom: 5px;
+  text-align: center;
+  color: #ecf0f1;
+}
+
+/* Top right container for search and datetime */
+.top-right {
+  position: absolute;
+  top: 0%;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px; /* Add spacing for better layout */
+  width: 250px;
+}
+
+/* Make .top-right adapt on smaller screens */
+@media(max-width: 768px){
+  .top-right {
+    position: static;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 20px;
+  }
+  /* Adjust search box to fill space on small screens */
+  .search-box {
+    flex: 1;
+    width: auto;
+  }
+  /* Reduce font size for datetime on small screens if needed */
+  .datetime {
+    font-size: 0.9em;
+  }
+}
+
+/* Search box styles */
+.search-box {
+  display: flex;
+  width: 100%;
+  max-width: 400px;
+}
+.search-box input[type="text"] {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  font-size: 1em;
+}
+.search-box button {
+  background-color: #2980b9;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+.search-box button:hover {
+  background-color: #3498db;
+}
+
+.datetime {
+  font-size: 1em;
+  color: white;
+  border-radius: 1%;
+  width: 100%;
+  text-align: right;
+}
+
+/* Navigation styles */
+nav {
+  margin-top: 20px;
+}
+.menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.menu li {
+  position: relative;
+  margin: 0 10px;
+}
+/* Make menu stack on small screens */
+@media(max-width: 768px){
+  .menu {
+    flex-direction: column;
+    align-items: center;
+    display: none; /* Hidden by default in mobile, toggled by JS */
+  }
+  .menu.show {
+    display: flex;
+  }
+  .menu li {
+    margin: 5px 0;
+  }
+}
+.menu a {
+  display: block;
+  padding: 15px 20px;
+  color: #ecf0f1;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s, color 0.3s;
+}
+.menu a:hover {
+  background-color: #34495e;
+  color: #ffffff;
+}
+
+/* Dropdown styles */
+.dropdown {
+  position: relative;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #34495e;
+  min-width: 220px;
+  flex-direction: column;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+.dropdown:hover > .dropdown-content {
+  display: flex;
+}
+.dropdown-content a {
+  padding: 12px 16px;
+  color: #ecf0f1;
+}
+.dropdown-content a:hover {
+  background-color: #3b5998;
+}
+
+/* Main container */
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+}
+/* Ensure container's padding adapts on small screens */
+@media(max-width: 768px){
+  .container {
+    margin: 20px;
+    padding: 15px;
+  }
+}
+
+/* Section styles */
+section {
+  margin-bottom: 50px;
+}
+h2 {
+  font-size: 2em;
+  margin-bottom: 15px;
+  color: #2c3e50;
+  border-bottom: 2px solid #2980b9;
+  padding-bottom: 10px;
+}
+h3 {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  color: #2980b9;
+}
+p {
+  font-size: 1.1em;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+/* Organization info block */
+.org-info {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.org-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.detail-item {
+  flex: 1 1 45%;
+}
+.detail-item strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #2c3e50;
+}
+
+/* Footer styles */
+footer {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+/* Additional responsiveness for smaller devices */
+@media(max-width: 480px){
+  header h1 {
+    font-size: 2em; /* Reduce header font size for small screens */
+  }
+  .search-box input[type="text"] {
+    font-size: 0.9em;
+  }
+  .search-box button {
+    padding: 6px 10px;
+  }
+  section {
+    margin-bottom: 30px;
+  }
+  h2 {
+    font-size: 1.75em;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Al-Hassan Institute of Health Science – Yumbe UG LTD</h1>
+<!-- Hamburger Menu Icon for mobile -->
+<div class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" role="button" tabindex="0">
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+</div>
+
+<div class="top-right">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search...">
+    <button onclick="alert('Search functionality to be implemented')">Search</button>
+  </div>
+  <div class="datetime" id="dateTimeDisplay"></div>
+</div>
+<nav>
+  <ul class="menu" id="mainMenu">
+    <li><a href="#home">Home</a></li>
+    <li class="dropdown">
+      <a href="#">About Us</a>
+      <ul class="dropdown-content">
+        <li><a href="#about">Overview</a></li>
+        <li><a href="#history">History</a></li>
+        <li><a href="#mission">Mission & Vision</a></li>
+        <li><a href="#leadership">Leadership</a></li>
+      </ul>
+    </li>
+    <li><a href="#admissions">Admissions</a></li>
+    <li class="dropdown">
+      <a href="#">Academic Programs</a>
+      <ul class="dropdown-content">
+        <li><a href="diploma-nursing.html">Diploma in Nursing</a></li>
+        <li><a href="diploma-midwifery.html">Diploma in Midwifery</a></li>
+        <li><a href="diploma-clinical-medicine.html">diploma in clinical medicine and community health </a></li>
+        <li><a href="diploma-pharmacy.html">Diploma in Pharmacy</a></li>
+        <li><a href="diploma-labtech.html">Diploma in Laboratory Technology</a></li>
+        <li><a href="nursing.html">Certificate in Nursing</a></li>
+        <li><a href="midwifery.html">Certificate in Midwifery</a></li>
+        <li><a href="certificate-pharmacy.html">Certificate in Pharmacy</a></li>
+        <li><a href="certificate-labtech.html">Certificate in Laboratory Technology</a></li>
+        <li><a href="community-health.html">Certificate in clinical medicine and community health</a></li>
+      </ul>
+    </li>
+    <li><a href="#facilities">Campus & Facilities</a></li>
+    <li><a href="#faculty">Faculty & Staff</a></li>
+    <li><a href="#contact">Contact Us</a></li>
+  </ul>
+</nav>
+</header>
+
+<div class="container" id="home">
+
+  <!-- Welcome / Overview -->
+  <section id="overview">
+    <h2>Welcome to Al-Hassan Institute of Health Science – Yumbe</h2>
+    <p>We are committed to providing excellent health education and training to meet the healthcare needs of Uganda and beyond. Our institute offers a variety of diploma and certificate programs in health sciences, equipping students with practical skills and knowledge to serve their communities.</p>
+    <img src="https://via.placeholder.com/1000x400?text=Campus+Image" alt="Campus Image" />
+  </section>
+
+  <!-- About Us -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>The Al-Hassan Institute of Health Science is a leading training institution in Yumbe, Uganda, dedicated to producing qualified health professionals. Our mission is to improve community health through quality education, research, and community engagement.</p>
+  </section>
+
+  <!-- History -->
+  <section id="history">
+    <h2>Our History</h2>
+    <p>Founded in 2026, our institute has rapidly grown to become a center of excellence for health education in the region. We collaborate with local health authorities and international partners to enhance our curriculum and facilities.</p>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section id="mission">
+    <h2>Mission & Vision</h2>
+    <h3>Our Mission</h3>
+    <p>To provide accessible, accredited, and community-responsive health sciences education that equips youth with practical skills, ethical values, and professional competence, strengthening the health workforce and improving healthcare service delivery in Yumbe District and the wider West Nile region</p>
+    <h3>Our Vision</h3>
+    <p>A healthy and resilient society where underserved and refugee-hosting communities have equitable access to quality healthcare delivered by skilled, ethical, and locally trained health professionals</p>
+  </section>
+
+  <!-- Leadership -->
+  <section id="leadership">
+    <h2>Our Leadership</h2>
+    <p>Meet our dedicated team of administrators and faculty committed to excellence in education.</p>
+  </section>
+
+  <!-- Admissions -->
+  <section id="admissions">
+    <h2>Admissions</h2>
+    <p>Applications are open for the upcoming academic year. Please review our admission requirements and apply online or visit our campus.</p>
+    <ul>
+      <li>Application deadline: March 15, 2026</li>
+      <li>Requirements: High school diploma, relevant qualifications, & application fee</li>
+    </ul>
+    <a href="#apply">Apply Now</a>
+  </section>
+
+  <!-- Academic Programs -->
+  <section id="programs">
+    <h2>Academic Programs</h2>
+    <h3 id="diploma-nursing">Diploma in Nursing</h3>
+    <p>Comprehensive training in nursing with practical placements. Duration: 3 years.</p>
+    <h3 id="diploma-midwifery">Diploma in Midwifery</h3>
+    <p>Specialized training in maternal and newborn health. Duration: 2 years.</p>
+    <h3 id="diploma-clinical-medicine">Diploma in Clinical Medicine</h3>
+    <p>Training in clinical diagnosis and patient care. Duration: 3 years.</p>
+    <h3 id="diploma-community-health">Diploma in Community Health</h3>
+    <p>Focus on health promotion, disease prevention, and community engagement. Duration: 2 years.</p>
+    <h3 id="diploma-pharmacy">Diploma in Pharmacy</h3>
+    <p>Preparation for pharmaceutical practice and medication management. Duration: 3 years.</p>
+    <h3 id="diploma-laboratory">Diploma in Laboratory Technology</h3>
+    <p>Training in diagnostic laboratory procedures. Duration: 2 years.</p>
+    <h3 id="cert-nursing">Certificate in Nursing</h3>
+    <p>Foundation training for entry-level nurses. Duration: 1 year.</p>
+    <h3 id="cert-midwifery">Certificate in Midwifery</h3>
+    <p>Basic midwifery skills. Duration: 1 year.</p>
+    <h3 id="cert-pharmacy">Certificate in Pharmacy</h3>
+    <p>Entry-level pharmaceutical training. Duration: 1 year.</p>
+    <h3 id="cert-laboratory">Certificate in Laboratory Technology</h3>
+    <p>Basic laboratory skills. Duration: 1 year.</p>
+  </section>
+
+  <!-- Campus & Facilities -->
+  <section id="facilities">
+    <h2>Campus & Facilities</h2>
+    <p>Our campus features modern classrooms, laboratories, a library, hostel accommodations, and recreational facilities to support student learning and well-being.</p>
+    <img src="https://via.placeholder.com/1000x400?text=Facilities+Image" alt="Campus Facilities" />
+  </section>
+
+  <!-- Faculty & Staff -->
+  <section id="faculty">
+    <h2>Faculty & Staff</h2>
+    <p>Our team comprises experienced health professionals and educators dedicated to student success and community service.</p>
+  </section>
+
+  <!-- Contact Us -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Address: Renege Cell, Mazanga Ward, Kuru Town Council, Yumbe District, Uganda</p>
+    <p>P.o.Box 620294 Yumbe, UGANDA</p>
+    <p>Phone: +256 771373732</p>
+    <p>Email: info@alhassanhealth.org</p>
+    <p>Follow us on social media for updates:</p>
+    <ul>
+      <li>Facebook: Al-Hassan Health Science</li>
+      <li>Twitter: @AlHassanHealth</li>
+    </ul>
+  </section>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2026 Al-Hassan Institute of Health Science – Yumbe. All rights reserved.</p>
+</footer>
+
+<!-- JavaScript for Date/Time & Comments & Mobile Menu Toggle -->
+<script>
+  function updateDateTime() {
+    const now = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric', 
+                      hour: '2-digit', minute: '2-digit', second: '2-digit' };
+    document.getElementById('dateTimeDisplay').textContent = now.toLocaleString(undefined, options);
+  }
+  setInterval(updateDateTime, 1000);
+  updateDateTime();
+
+  // Hamburger menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const menu = document.getElementById('mainMenu');
+
+  menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('show');
+    // Optionally, toggle aria-expanded for accessibility
+    const isExpanded = menu.classList.contains('show');
+    menuToggle.setAttribute('aria-expanded', isExpanded);
+  });
+
+  // Hide menu when clicking outside
+  document.addEventListener('click', (event) => {
+    if (!menu.contains(event.target) && !menuToggle.contains(event.target) && window.innerWidth <= 768) {
+      menu.classList.remove('show');
+      menuToggle.setAttribute('aria-expanded', false);
+    }
+  });
+
+  // Show/hide menu on resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      menu.classList.remove('show');
+      menu.style.display = 'flex'; // ensure it's visible on large screens
+    } else {
+      menu.style.display = 'none'; // hide by default on small screens
+    }
+  });
+
+  // Initialize menu display based on screen size
+  if (window.innerWidth <= 768) {
+    menu.style.display = 'none';
+  }
+</script>
+
+</body>
+</html>

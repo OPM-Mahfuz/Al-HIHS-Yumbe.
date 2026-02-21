@@ -1,0 +1,6 @@
+<!-- Add this within your admissions section or as a popup message -->
+<section id="admissions" style="padding:20px; background:#e8f4f8; border-radius:8px; margin-top:20px;">
+  <h2>Admissions Information</h2>
+  <p>We welcome prospective students to join our esteemed programs at Al-Hassan Institute. To apply, please review the admission requirements for your chosen program and submit your application through our online form. Our admissions team is here to assist you every step of the way. Ensure you have all necessary documents ready, including your academic certificates and identification.</p>
+  <p>For more details or assistance, contact our admissions office at <a href="mailto:admissions@alhassaninstitute.edu" target="_blank">admissions@alhassaninstitute.edu</a> or call us at +123-456-7890. We look forward to welcoming you to our community!</p>
+</section>
